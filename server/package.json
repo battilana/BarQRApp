@@ -1,0 +1,44 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -L",
+    "start-prod": "node index.js",
+    "test": "mocha -w ./tests/**/*.spec.js",
+    "build": "npm install"
+  },
+  "author": "Battilana",
+  "license": "ISC",
+  "engines": {
+    "node": ">=12.18.3",
+    "npm": ">=6.14.6"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^6.9.2",
+    "axios": "^0.27.2",
+    "body-parser": "^1.19.0",
+    "cloud-sdk": "0.0.14",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "fs": "0.0.1-security",
+    "jimp": "^0.22.4",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.1",
+    "pg": "^8.5.1",
+    "qrcode": "^1.5.1",
+    "sequelize": "^6.28.0"
+  },
+  "devDependencies": {
+    "supertest-session": "^4.1.0",
+    "mocha": "^8.2.1",
+    "chai": "^4.2.0",
+    "nodemon": "^2.0.6",
+    "supertest": "^6.0.1"
+  }
+}
