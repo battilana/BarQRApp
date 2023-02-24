@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import "./login.css";
 import {login} from "../app/actions.js"
 import { useDispatch, useSelector } from "react-redux"
+
 const Login = () => {
   let dispatch = useDispatch()
   const user = useSelector(state => state.username);
@@ -34,30 +35,32 @@ const Login = () => {
   }, [user])
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <div className="login-container">
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="form-input">
+          <label htmlFor="username">Email</label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            onChange={handleUsernameChange}
+          />
+        </div>
+        <div className="form-input">
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </div>
+        <button className="form-submit-btn" type="submit">
+          Login
+        </button>
+      </form>
       {error && <p className="error-message">Incorrect username or password</p>}
-      <div className="form-input">
-        <label htmlFor="username">Email</label>
-        <input
-          id="username"
-          type="text"
-          value={username}
-          onChange={handleUsernameChange}
-        />
-      </div>
-      <div className="form-input">
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-      </div>
-      <button className="form-submit-btn" type="submit">
-        Login
-      </button>
-    </form>
+    </div>
   );
 };
 

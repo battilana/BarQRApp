@@ -20,6 +20,7 @@ router.post("/", async (req, res, next) => {
   const type = "cons";
   const { n, email, wp } = req.body;
   const resArray = [];
+  const imgArray= [];
   const bucketName = "bar-qrcodes-bucket-1";
   const layoutImageFilename = "prueba-consumision-1.jpg";
   for (let i = 0; i < n; i++) {
@@ -52,7 +53,8 @@ router.post("/", async (req, res, next) => {
       const dateString = `${date.getFullYear().toString().slice(2)}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}-${date.getHours().toString().padStart(2, '0')}Hrs-${date.getMinutes().toString().padStart(2, '0')}Mins-${date.getSeconds().toString().padStart(2, '0')}`;
       const imageName = `QRCode-${dateString}.${layoutImage.getExtension()}`;      
       const publicUrl = await uploadImage(mergedImageBuffer, imageName, bucketName);
-      resArray.push(publicUrl);
+      resArray.push(mergedImageBuffer);
+      imgArray.push(publicUrl);
 
     } catch (error) {
       console.log(error)
@@ -60,7 +62,7 @@ router.post("/", async (req, res, next) => {
     }
   }
   if(email){
-    sendEmail(resArray, email);
+    sendEmail(imgArray, email);
   }
   else if (wp){
     console.log(wp)
