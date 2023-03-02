@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './status.css';
@@ -36,12 +35,12 @@ const Status = () => {
   return (
     <Box className="status-container">
       <h1 className={`status-header ${status === 'true' ? 'invalid' : 'valid'}`}>
-        {status === 'true' ? 'QR es inválido' : 'QR es válido'}
+        {status === 'true' ? 'QR inválido' : 'QR válido'}
       </h1>
       {status !== 'true' && (
-        <Button className="use-button" variant="contained" color="primary" onClick={changeStatus}>
+        <button className="button" variant="contained" color="primary" onClick={changeStatus}>
           Usar
-        </Button>
+        </button>
       )}
     </Box>
   );

@@ -7,14 +7,14 @@ const Jimp = require("jimp");
 const layoutJpeg = "./src/routes/images/prueba-consumision-1.jpg";
 const sendEmail = require("./sendEmail").sendEmail;
 const sendWp = require("./sendWp").sendWp;
-const { uploadImage } = require('./storage');
-const { Storage } = require('@google-cloud/storage');
-const { GOOGLE_APPLICATION_CREDENTIALS, PROJECT_ID } = process.env;
-const credentials = (JSON.parse(GOOGLE_APPLICATION_CREDENTIALS))
-const storage = new Storage({
-  projectId: PROJECT_ID,
-  credentials,
-});
+// const { uploadImage } = require('./storage');
+// const { Storage } = require('@google-cloud/storage');
+// const { GOOGLE_APPLICATION_CREDENTIALS, PROJECT_ID } = process.env;
+// const credentials = (JSON.parse(GOOGLE_APPLICATION_CREDENTIALS))
+// const storage = new Storage({
+//   projectId: PROJECT_ID,
+//   credentials,
+// });
 
 router.post("/", async (req, res, next) => {
   const type = "cons";
@@ -25,16 +25,14 @@ router.post("/", async (req, res, next) => {
   const layoutImageFilename = "prueba-consumision-1.jpg";
   for (let i = 0; i < n; i++) {
     const newQr = await Qr.create({ type });
-    const link = "https://bar-qr.vercel.app/qr/" + newQr.id;
+    const link = "http://localhost:3000/qr/" + newQr.id;
     console.log(link)
     try {
       const buffer = await qrcode.toBuffer(link, { type: 'url' });
-      const [qrCodeImage, layoutImageFile] = await Promise.all([
+      const [qrCodeImage, layoutImage] = await Promise.all([
         Jimp.read(buffer),
-        storage.bucket(bucketName).file(layoutImageFilename).download(),
+        Jimp.read(`../public/${layoutImageFilename}`),
       ]);
-      console.log(layoutImageFile)
-      const layoutImage = await Jimp.read(layoutImageFile[0]);
       qrCodeImage.resize(3000, 3000);
       const x = (layoutImage.bitmap.width - qrCodeImage.bitmap.width) / 2;
       const y = (layoutImage.bitmap.height - qrCodeImage.bitmap.height) / 2;
@@ -52,19 +50,19 @@ router.post("/", async (req, res, next) => {
       const date = new Date();
       const dateString = `${date.getFullYear().toString().slice(2)}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}-${date.getHours().toString().padStart(2, '0')}Hrs-${date.getMinutes().toString().padStart(2, '0')}Mins-${date.getSeconds().toString().padStart(2, '0')}`;
       const imageName = `QRCode-${dateString}.${layoutImage.getExtension()}`;      
-      const publicUrl = await uploadImage(mergedImageBuffer, imageName, bucketName);
+      // const publicUrl = await uploadImage(mergedImageBuffer, imageName, bucketName);
       resArray.push(mergedImageBuffer);
-      imgArray.push(publicUrl);
+      // imgArray.push(publicUrl);
 
     } catch (error) {
       console.log(error)
       return res.status(500).send('Error generating QR code');
     }
   }
-  if(email){
-    sendEmail(imgArray, email);
-  }
-  else if (wp){
+  // if(email){
+  //   sendEmail(imgArray, email);
+  // }
+  if (wp){
     console.log(wp)
   }
   return res.json({ images: resArray });

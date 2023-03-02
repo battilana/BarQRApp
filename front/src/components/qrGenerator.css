@@ -116,7 +116,25 @@
   background-color: #f05d5d;
 }
 
-
+.form-email-btn{
+  padding: 1rem 2rem;
+  background-color: #00BFFF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.3rem;
+  letter-spacing: 1px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+.form-email-btn:hover{
+  background-color: #0077BE;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 .download-btn {
   display: block;
   margin: 2rem auto;

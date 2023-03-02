@@ -17,7 +17,6 @@ let transporter = nodemailer.createTransport({
     starttls: true
   }
 });
-console.log(EMAIL, PASS)
 const sendEmail = async (images, to) => {
   const storage = new Storage({
     projectId: PROJECT_ID,
