@@ -8,6 +8,7 @@ import Status from "./components/status";
 import QRGenerator from './components/qrGen';
 import 'semantic-ui-css/semantic.min.css'
 import Login from "./components/login"
+import Register from "./components/register"
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
         <div className="App">
           <Routes>
           <Route exact path="/" element={<Login/>}>
+              </Route>
+              <Route exact path="/register" element={<Register/>}>
               </Route>
               <Route exact path="/qr" element={<QRGenerator/>}>
               </Route>

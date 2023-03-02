@@ -1,6 +1,6 @@
 .form {
   width: 28rem;
-  margin: 10rem auto;
+  margin: 4rem auto 4rem;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -44,6 +44,7 @@
   background-color: #00BFFF;
   color: #FFFFFF;
   border: none;
+  margin-left: 0.5rem;
   border-radius: 5px;
   font-size: 1.7rem;
   font-weight: bold;
@@ -61,10 +62,9 @@
 
 .error-message {
   display: inline-block;
-  margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #FFB6C1;
-  color: #191970;
+  background-color: #f01032;
+  color: #0e0e3a;
   border-radius: 5px;
   font-size: 1.6rem;
   font-weight: bold;
