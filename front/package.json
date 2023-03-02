@@ -40,7 +40,8 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "plugins": ["react@18.2.0"]
   },
   "browserslist": {
     "production": [

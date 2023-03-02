@@ -13,7 +13,6 @@ module.exports = (sequelize) => {
     },
     loggedIn: {
         type: DataTypes.BOOLEAN,
-        unique: true,
         allowNull: false,
         defaultValue: false
       }

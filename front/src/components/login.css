@@ -37,11 +37,12 @@
   border-radius: 5px;
   font-size: 1.7rem;
   text-align: center;
+  color: #0e0e3a;
 }
 
 .form-submit-btn {
   padding: 1rem 2rem;
-  background-color: #00BFFF;
+  background-color: #2B5E6F;
   color: #FFFFFF;
   border: none;
   margin-left: 0.5rem;

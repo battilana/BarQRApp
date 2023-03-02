@@ -6,7 +6,7 @@ import './qrGenerator.css';
 import { useSelector } from "react-redux";
 import PhoneInput from 'react-phone-number-input/input';
 import 'react-phone-number-input/style.css';
-
+import Navbar from './navBar';
 
 const QRGenerator = () => {
   const [numberOfCodes, setNumberOfCodes] = useState('');
@@ -102,6 +102,7 @@ const QRGenerator = () => {
 
   return (
     <div>
+      <Navbar />
       {confirmation && <div className="confirmation">{confirmation}</div>}
       <form className="form" onSubmit={handleSubmit}>
         <div className="form-input">
